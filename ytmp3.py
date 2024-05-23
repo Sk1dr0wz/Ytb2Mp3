@@ -1,9 +1,12 @@
 import yt_dlp
-from moviepy.editor import VideoFileClip
 import os
 import re
 import logging
 import coloredlogs
+from colorama import Fore, Style, init
+
+# Initialize colorama
+init(autoreset=True)
 
 # Setting up logging
 logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
@@ -57,5 +60,21 @@ def main(url):
         logger.error(f'Failed to download and convert video: {e}')
 
 if __name__ == "__main__":
+    print(f"""{Style.BRIGHT + Fore.RED}
+
+███████╗██╗  ██╗ ██╗██████╗ ██████╗  ██████╗ ██╗    ██╗███████╗
+██╔════╝██║ ██╔╝███║██╔══██╗██╔══██╗██╔═████╗██║    ██║╚══███╔╝
+███████╗█████╔╝ ╚██║██║  ██║██████╔╝██║██╔██║██║ █╗ ██║  ███╔╝
+╚════██║██╔═██╗  ██║██║  ██║██╔══██╗████╔╝██║██║███╗██║ ███╔╝
+███████║██║  ██╗ ██║██████╔╝██║  ██║╚██████╔╝╚███╔███╔╝███████╗
+╚══════╝╚═╝  ╚═╝ ╚═╝╚═════╝ ╚═╝  ╚═╝ ╚═════╝  ╚══╝╚══╝ ╚══════╝
+
+{Fore.RED}════════════════════════════════════════════════════════════════════════════════════════
+{Style.BRIGHT + Fore.YELLOW}{"Coded by sk1dr0wz".center(80)}
+{"Youtube 2 Mp3".center(80)}
+{"Copyright By: Hamba Abdi".center(80)}
+{"pip install -r requirements.txt".center(80)}
+{Fore.RED}════════════════════════════════════════════════════════════════════════════════════════""")
+
     youtube_url = input("Enter the YouTube video URL: ")
     main(youtube_url)
