@@ -5,21 +5,17 @@ import logging
 import coloredlogs
 from colorama import Fore, Style, init
 
-# Initialize colorama
 init(autoreset=True)
 
-# Setting up logging
 logging.basicConfig(format='%(asctime)s - %(levelname)s - %(message)s', datefmt='%Y-%m-%d %H:%M:%S')
 coloredlogs.install(level='DEBUG')
 
 def sanitize_filename(filename):
-    # Remove or replace characters that are invalid in Windows filenames
     return re.sub(r'[<>:"/\\|?*]', '_', filename)
 
 def download_youtube_video(url, download_path='downloads'):
     logger = logging.getLogger('download_youtube_video')
 
-    # Create the download directory if it doesn't exist
     if not os.path.exists(download_path):
         os.makedirs(download_path)
         logger.debug(f'Created download directory: {download_path}')
@@ -32,7 +28,7 @@ def download_youtube_video(url, download_path='downloads'):
             'preferredcodec': 'mp3',
             'preferredquality': '192',
         }],
-        'ffmpeg_location': 'C:/ffmpeg/bin'  # Specify the path to ffmpeg
+        'ffmpeg_location': 'C:/ffmpeg/bin'  
     }
 
     try:
@@ -48,16 +44,50 @@ def download_youtube_video(url, download_path='downloads'):
         logger.error(f'Error downloading video: {e}')
         raise
 
-def main(url):
+def download_youtube_video_as_video(url, download_path='downloads'):
+    logger = logging.getLogger('download_youtube_video_as_video')
+
+    if not os.path.exists(download_path):
+        os.makedirs(download_path)
+        logger.debug(f'Created download directory: {download_path}')
+
+    ydl_opts = {
+        'format': 'bestvideo[height<=1080]+bestaudio/best[height<=1080]/best[height<=1080]',
+        'outtmpl': os.path.join(download_path, '%(title)s.%(ext)s'),
+        'merge_output_format': 'mp4',
+        'ffmpeg_location': 'C:/ffmpeg/bin'  
+    }
+
+    try:
+        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+            logger.debug(f'Starting download for URL: {url}')
+            ydl.download([url])
+            info_dict = ydl.extract_info(url, download=False)
+            video_title = sanitize_filename(info_dict.get('title', ''))
+            video_path = os.path.join(download_path, video_title + '.mp4')
+            logger.debug(f'Downloaded video title: {video_title}')
+        return video_path
+    except Exception as e:
+        logger.error(f'Error downloading video: {e}')
+        raise
+
+def main(url, option):
     logger = logging.getLogger('main')
 
     download_path = 'downloads'
     try:
-        logger.info(f'Starting download and conversion for URL: {url}')
-        mp3_path = download_youtube_video(url, download_path)
-        logger.info(f'Video downloaded and converted to MP3: {mp3_path}')
+        if option == '1':
+            logger.info(f'Starting download and conversion to MP3 for URL: {url}')
+            mp3_path = download_youtube_video(url, download_path)
+            logger.info(f'Video downloaded and converted to MP3: {mp3_path}')
+        elif option == '2':
+            logger.info(f'Starting video download for URL: {url}')
+            video_path = download_youtube_video_as_video(url, download_path)
+            logger.info(f'Video downloaded: {video_path}')
+        else:
+            logger.error(f'Invalid option: {option}')
     except Exception as e:
-        logger.error(f'Failed to download and convert video: {e}')
+        logger.error(f'Failed to download: {e}')
 
 if __name__ == "__main__":
     print(f"""{Style.BRIGHT + Fore.RED}
@@ -77,4 +107,8 @@ if __name__ == "__main__":
 {Fore.RED}════════════════════════════════════════════════════════════════════════════════════════""")
 
     youtube_url = input("Enter the YouTube video URL: ")
-    main(youtube_url)
+    print("Choose an option:")
+    print("1. Download as MP3")
+    print("2. Download as Video (720p to 1080p)")
+    option = input("Enter the option (1 or 2): ")
+    main(youtube_url, option)
