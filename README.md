@@ -46,9 +46,15 @@ Enter the option (1 or 2): 1
 ## Technologies & Tools
 ![](https://img.shields.io/badge/OS-Linux-informational?style=flat&logo=linux&logoColor=white&color=2bbc8a)
 ![](https://img.shields.io/badge/Code-Python-informational?style=flat&logo=python&logoColor=white&color=2bbc8a)
-![](https://img.shields.io/badge/Termux-Android-blue)
+![](https://shields.io/badge/Windows--9cf?logo=Windows&style=social)
 ![](https://img.shields.io/badge/PKG-ffmpeg-yellowgreen)
-![](https://img.shields.io/badge/Noob-Keep%20Learning-yellow)
+![](https://img.shields.io/badge/YouTube-red?style=for-the-badge&logo=youtube&logoColor=white)
+
+## GitHub Stats
+
+<a href="https://github.com/Sk1dr0wz/Ytb2Mp3">
+  <img align="center" src="https://github-readme-stats.vercel.app/api/pin/?username=Sk1dr0wz&repo=Ytb2Mp3&title_color=ffffff&text_color=c9cacc&icon_color=2bbc8a&bg_color=1d1f21" />
+</a>
 
 # Credit
 * [Hamba Abdi]
