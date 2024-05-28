@@ -38,5 +38,17 @@ Enter the YouTube video URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
 Enter the option (1 or 2): 1
 
 ```
+## Features
+- [x] Download youtube video in mp3
+- [x] Easy to use
+- [x] Fast downloading speed 
+
+## Technologies & Tools
+![](https://img.shields.io/badge/OS-Linux-informational?style=flat&logo=linux&logoColor=white&color=2bbc8a)
+![](https://img.shields.io/badge/Code-Python-informational?style=flat&logo=python&logoColor=white&color=2bbc8a)
+![](https://img.shields.io/badge/Termux-Android-blue)
+![](https://img.shields.io/badge/PKG-ffmpeg-yellowgreen)
+![](https://img.shields.io/badge/Noob-Keep%20Learning-yellow)
+
 # Credit
 * [Hamba Abdi]
