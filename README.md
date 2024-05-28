@@ -48,7 +48,7 @@ Enter the option (1 or 2): 1
 ![](https://img.shields.io/badge/Code-Python-informational?style=flat&logo=python&logoColor=white&color=2bbc8a)
 ![](https://shields.io/badge/Windows--9cf?logo=Windows&style=social)
 ![](https://img.shields.io/badge/PKG-ffmpeg-yellowgreen)
-![](https://img.shields.io/badge/YouTube-red?style=for-the-badge&logo=youtube&logoColor=white)
+![](https://img.shields.io/badge/YouTube-red?style=flat&logo=youtube&logoColor=white)
 
 ## GitHub Stats
 
